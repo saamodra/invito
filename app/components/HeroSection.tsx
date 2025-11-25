@@ -8,7 +8,7 @@ export default function HeroSection({ invitedName }: HeroSectionProps) {
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-between overflow-hidden px-6 py-16 text-center text-white sm:py-20">
       <Image
-        src="/Sabrang-Yeni/pdp-5.jpg"
+        src="/photos/pdp-5.jpg"
         alt="Sabrang dan Yeni"
         fill
         className="object-cover"

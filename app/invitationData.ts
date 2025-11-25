@@ -55,9 +55,14 @@ export const events: EventDetail[] = [
 ];
 
 export const galleryImages: GalleryImage[] = [
-  { src: "/Sabrang-Yeni/pdp-12.jpg", alt: "Sabrang dan Yeni dalam sesi prewedding" },
-  { src: "/Sabrang-Yeni/pdp-25.jpg", alt: "Pasangan Sabrang dan Yeni berpose anggun" },
-  { src: "/Sabrang-Yeni/pdp-42.jpg", alt: "Potret kehangatan Sabrang dan Yeni" },
+  { src: "/galleries/pdp-12.jpg", alt: "Sabrang dan Yeni dalam sesi prewedding" },
+  { src: "/galleries/pdp-21.jpg", alt: "Sabrang dan Yeni bersama keluarga" },
+  { src: "/galleries/pdp-25.jpg", alt: "Pasangan Sabrang dan Yeni berpose anggun" },
+  { src: "/galleries/pdp-24.jpg", alt: "Potret candid kebersamaan" },
+  { src: "/galleries/pdp-35.jpg", alt: "Momen berdua penuh tawa" },
+  { src: "/galleries/pdp-36.jpg", alt: "Momen santai Sabrang dan Yeni" },
+  { src: "/galleries/pdp-42.jpg", alt: "Potret kehangatan Sabrang dan Yeni" },
+  { src: "/galleries/pdp-37.jpg", alt: "Potret kehangatan Sabrang dan Yeni" },
 ];
 
 export const weddingGifts: WeddingGift[] = [
@@ -70,13 +75,13 @@ export const couple: CoupleDetail[] = [
     label: "The Groom",
     name: "Sabrang Prasetyo",
     parents: ["Putra dari Bapak Purnomo", "dan Ibu Supini"],
-    image: "/Sabrang-Yeni/pdp-68.jpg",
+    image: "/photos/pdp-68.jpg",
   },
   {
     label: "The Bride",
     name: "Yeni Kurnia Sari",
     parents: ["Putri dari Bapak Sukadi", "dan Almh. Ibu Sunarmi"],
-    image: "/Sabrang-Yeni/pdp-62.jpg",
+    image: "/photos/pdp-62.jpg",
   },
 ];
 

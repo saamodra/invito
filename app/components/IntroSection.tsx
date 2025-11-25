@@ -10,7 +10,7 @@ export default function IntroSection() {
         <div className="relative w-full overflow-hidden rounded-t-2xl bg-[#0f0a07]/80 shadow-[0_18px_45px_rgba(0,0,0,0.4)]">
           <div className="relative aspect-[3/4] w-full">
             <Image
-              src="/Sabrang-Yeni/pdp-25.jpg"
+              src="/photos/pdp-41.jpg"
               alt="Sabrang dan Yeni"
               fill
               className="object-cover"

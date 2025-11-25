@@ -18,13 +18,11 @@ export default function GallerySection({ galleryImages }: GallerySectionProps) {
         </div>
       </section>
 
-      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="grid grid-cols-2 gap-4">
         {galleryImages.map((image, index) => (
           <div
             key={image.src}
-            className={`relative h-64 overflow-hidden border border-[#D9D4CF] bg-[#F1EFEF] shadow-lg shadow-[#1A1A1A]/10 ${
-              index === 1 ? "sm:col-span-2 lg:col-span-1 lg:row-span-2 lg:h-auto" : ""
-            }`}
+            className={`relative h-64 overflow-hidden border border-[#D9D4CF] bg-[#F1EFEF] shadow-lg shadow-[#1A1A1A]/10`}
           >
             <Image
               src={image.src}
