@@ -6,6 +6,7 @@ import GallerySection from "./components/GallerySection";
 import GiftSection from "./components/GiftSection";
 import HeroSection from "./components/HeroSection";
 import IntroSection from "./components/IntroSection";
+import WishesSection from "./components/WishesSection";
 import {
   couple,
   events,
@@ -71,6 +72,7 @@ export default async function Home({ searchParams }: HomeProps) {
               />
               <GiftSection weddingGifts={weddingGifts} />
               <GallerySection galleryImages={galleryImages} />
+              <WishesSection invitedName={invitedName} />
               <FooterSection />
             </main>
           </div>

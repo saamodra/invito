@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { BsFillEnvelopeHeartFill } from "react-icons/bs";
 
 type HeroSectionProps = {
   invitedName: string;
@@ -32,6 +33,7 @@ export default function HeroSection({ invitedName }: HeroSectionProps) {
           href="#invitation-content"
           className="cursor-pointer font-ui inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#4A301F] px-8 py-3 text-sm font-semibold uppercase tracking-wide text-[#D4A857] shadow-lg shadow-black/40 transition hover:bg-[#1A1A1A]"
         >
+          <BsFillEnvelopeHeartFill className="h-5 w-5" />
           Buka Undangan
         </a>
       </div>

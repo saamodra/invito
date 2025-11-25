@@ -13,7 +13,9 @@ export default function CoupleSection({ couple }: CoupleSectionProps) {
           key={person.label}
           className="flex flex-col gap-6 border border-[#4A301F33] bg-[#d9d4cf]/80 p-6 text-center text-[#2B2B2B] shadow-[0_15px_30px_rgba(26,26,26,0.15)]"
         >
-          <span className="font-ui text-sm uppercase tracking-[0.5em] text-[#D4A857]">{person.label}</span>
+          <span className="font-ui inline-flex items-center justify-center self-center rounded-full border border-[#4A301F33] bg-white/90 px-4 py-1 text-sm font-semibold uppercase tracking-[0.4em] text-[#4A301F] shadow-sm shadow-[#1A1A1A]/15">
+            {person.label}
+          </span>
           <div className="relative w-full overflow-hidden border border-[#c4b08f] bg-white shadow-lg">
             <Image
               src={person.image}

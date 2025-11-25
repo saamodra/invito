@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { EventDetail, Location } from "../invitationData";
+import { FaMap } from "react-icons/fa6";
 
 type CountdownSectionProps = {
   events: EventDetail[];
@@ -80,9 +81,10 @@ export default function CountdownSection({ events, location, weddingTimestamp }:
             href={location.mapsUrl}
             target="_blank"
             rel="noreferrer"
-            className="mt-4 inline-flex items-center justify-center rounded-full bg-[#4A301F] px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#D4A857] shadow-lg shadow-[#1A1A1A]/20 transition hover:bg-[#1A1A1A]"
+            className="font-ui mt-4 inline-flex items-center justify-center rounded-full bg-[#4A301F] px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#D4A857] shadow-lg shadow-[#1A1A1A]/20 transition hover:bg-[#1A1A1A]"
           >
-            Buka Google Maps
+            <FaMap className="mr-2" />
+            Buka Maps
           </a>
         )}
       </div>
