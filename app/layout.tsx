@@ -27,6 +27,9 @@ const greatVibes = Great_Vibes({
 export const metadata: Metadata = {
   title: "Invito",
   description: "Undangan Pernikahan Digital",
+  other: {
+    "apple-mobile-web-app-title": "Invito",
+  },
 };
 
 export default function RootLayout({
