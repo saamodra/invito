@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { admin, firestore } from "@/lib/firebaseAdmin";
+import { getAdmin, getFirestore } from "@/lib/firebaseAdmin";
 
 const COLLECTION_NAME = "wishes";
 const MAX_RESULTS = 100;
@@ -10,6 +10,7 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const coupleId = searchParams.get("coupleId")?.trim() || DEFAULT_COUPLE_ID;
+    const firestore = getFirestore();
 
     const snapshot = await firestore
       .collection(COLLECTION_NAME)
@@ -42,6 +43,8 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   try {
+    const firestore = getFirestore();
+    const admin = getAdmin();
     const payload = (await request.json().catch(() => null)) as Record<string, unknown> | null;
 
     if (!payload) {
