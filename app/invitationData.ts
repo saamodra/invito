@@ -48,21 +48,25 @@ export const events: EventDetail[] = [
   },
   {
     title: "Resepsi Nikah",
-    date: "Minggu, 8 Februari 2026",
-    time: "13.00 - Selesai",
+    date: "Sabtu, 8 Februari 2026",
+    time: "13.00 WIB - Selesai",
     location: "main",
   },
 ];
 
 export const galleryImages: GalleryImage[] = [
-  { src: "/galleries/pdp-12.jpg", alt: "Sabrang dan Yeni dalam sesi prewedding" },
-  { src: "/galleries/pdp-21.jpg", alt: "Sabrang dan Yeni bersama keluarga" },
-  { src: "/galleries/pdp-25.jpg", alt: "Pasangan Sabrang dan Yeni berpose anggun" },
-  { src: "/galleries/pdp-24.jpg", alt: "Potret candid kebersamaan" },
-  { src: "/galleries/pdp-35.jpg", alt: "Momen berdua penuh tawa" },
-  { src: "/galleries/pdp-36.jpg", alt: "Momen santai Sabrang dan Yeni" },
-  { src: "/galleries/pdp-42.jpg", alt: "Potret kehangatan Sabrang dan Yeni" },
-  { src: "/galleries/pdp-37.jpg", alt: "Potret kehangatan Sabrang dan Yeni" },
+  { src: "/galleries/pdp-70.jpg", alt: "PDP 70" },
+  { src: "/galleries/pdp-61.jpg", alt: "PDP 61" },
+  { src: "/galleries/pdp-21.jpg", alt: "PDP 21" },
+  { src: "/galleries/pdp-12.jpg", alt: "PDP 12" },
+  { src: "/galleries/pdp-10.jpg", alt: "PDP 10" },
+  { src: "/galleries/pdp-11.jpg", alt: "PDP 11" },
+  { src: "/galleries/pdp-25.jpg", alt: "PDP 25" },
+  { src: "/galleries/pdp-24.jpg", alt: "PDP 24" },
+  { src: "/galleries/pdp-36.jpg", alt: "PDP 36" },
+  { src: "/galleries/pdp-41.jpg", alt: "PDP 41" },
+  { src: "/galleries/pdp-42.jpg", alt: "PDP 42" },
+  { src: "/galleries/pdp-30.jpg", alt: "PDP 30" },
 ];
 
 export const weddingGifts: WeddingGift[] = [

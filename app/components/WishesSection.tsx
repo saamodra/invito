@@ -5,30 +5,27 @@ import { FaEnvelopeOpenText, FaHeart, FaPaperPlane } from "react-icons/fa";
 
 type WishesSectionProps = {
   invitedName?: string;
+  coupleId?: string;
 };
 
 type Wish = {
+  id?: string;
   name: string;
   message: string;
-  timestamp: number;
+  timestamp: number | null;
 };
 
-export default function WishesSection({ invitedName = "Tamu Istimewa" }: WishesSectionProps) {
+export default function WishesSection({
+  invitedName = "Tamu Istimewa",
+  coupleId = "sabrang-yeni",
+}: WishesSectionProps) {
   const [name, setName] = useState(invitedName);
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(1);
-  const [wishes, setWishes] = useState<Wish[]>([
-    {
-      name: "Sahabat Lama",
-      message: "Selamat menempuh hidup baru! Semoga selalu diberi kebahagiaan dan keberkahan.",
-      timestamp: Date.now() - 1000 * 60 * 60 * 3,
-    },
-    {
-      name: "Keluarga Besar",
-      message: "Barakallah untuk pernikahannya. Semoga menjadi keluarga sakinah, mawaddah, warahmah.",
-      timestamp: Date.now() - 1000 * 60 * 60,
-    },
-  ]);
+  const [wishes, setWishes] = useState<Wish[]>([]);
   const pageSize = 4;
   const totalPages = Math.max(1, Math.ceil(wishes.length / pageSize));
   const currentPage = Math.min(page, totalPages);
@@ -36,10 +33,47 @@ export default function WishesSection({ invitedName = "Tamu Istimewa" }: WishesS
   const visibleWishes = wishes.slice(startIndex, startIndex + pageSize);
 
   useEffect(() => {
+    const loadWishes = async () => {
+      try {
+        const response = await fetch(`/api/wishes?coupleId=${encodeURIComponent(coupleId)}`, {
+          cache: "no-store",
+        });
+        if (!response.ok) {
+          throw new Error("Failed to fetch wishes");
+        }
+
+        const data = await response.json();
+        if (Array.isArray(data.wishes)) {
+          setWishes(
+            data.wishes
+              .filter((wish: Record<string, unknown>) => typeof wish.message === "string")
+              .map((wish: Record<string, unknown>) => ({
+                id: typeof wish.id === "string" ? wish.id : undefined,
+                name: typeof wish.name === "string" ? wish.name : "Tamu Istimewa",
+                message: String(wish.message),
+                timestamp: typeof wish.timestamp === "number" ? wish.timestamp : null,
+              }))
+          );
+        }
+        setError(null);
+      } catch (err) {
+        console.error(err);
+        setError("Gagal memuat ucapan. Silakan coba lagi.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadWishes();
+  }, [coupleId]);
+
+  // Clamp page to totalPages when wishes change
+  useEffect(() => {
     if (page > totalPages) {
       setPage(totalPages);
     }
-  }, [page, totalPages]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [wishes.length]);
 
   return (
     <section className="relative overflow-hidden rounded-2xl border border-[#C57B8B]/40 bg-gradient-to-br from-[#fff8f3] via-[#f3e4da] to-[#e5d2c9] p-6 shadow-[0_20px_45px_rgba(26,26,26,0.15)] sm:p-8">
@@ -58,12 +92,48 @@ export default function WishesSection({ invitedName = "Tamu Istimewa" }: WishesS
           onSubmit={(event) => {
             event.preventDefault();
             const sender = name.trim() || "Tamu Istimewa";
-            const wishMessage =
-              message.trim() ||
-              "Selamat menempuh hidup baru! Semoga menjadi keluarga yang sakinah mawaddah warahmah.";
-            setWishes((prev) => [{ name: sender, message: wishMessage, timestamp: Date.now() }, ...prev]);
-            setMessage("");
-            setPage(1);
+            const wishMessage = message.trim();
+
+            if (!wishMessage) {
+              setError("Ucapan tidak boleh kosong.");
+              return;
+            }
+
+            const sendWish = async () => {
+              setSubmitting(true);
+              setError(null);
+              try {
+                const response = await fetch("/api/wishes", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ name: sender, message: wishMessage, coupleId }),
+                });
+
+                if (!response.ok) {
+                  throw new Error("Failed to send wish");
+                }
+
+                const saved = await response.json();
+                setWishes((prev) => [
+                  {
+                    id: typeof saved.id === "string" ? saved.id : undefined,
+                    name: typeof saved.name === "string" ? saved.name : sender,
+                    message: typeof saved.message === "string" ? saved.message : wishMessage,
+                    timestamp: typeof saved.timestamp === "number" ? saved.timestamp : Date.now(),
+                  },
+                  ...prev,
+                ]);
+                setMessage("");
+                setPage(1);
+              } catch (err) {
+                console.error(err);
+                setError("Gagal mengirim ucapan. Silakan coba lagi.");
+              } finally {
+                setSubmitting(false);
+              }
+            };
+
+            void sendWish();
           }}
         >
           <div className="space-y-1">
@@ -105,13 +175,15 @@ export default function WishesSection({ invitedName = "Tamu Istimewa" }: WishesS
           <button
             type="submit"
             className="font-ui inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#4A301F] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#D4A857] shadow-lg shadow-[#1A1A1A]/20 transition hover:bg-[#1A1A1A]"
+            disabled={submitting}
           >
             <FaPaperPlane aria-hidden="true" />
-            Kirim Ucapan
+            {submitting ? "Mengirim..." : "Kirim Ucapan"}
           </button>
         </form>
 
         <div className="space-y-3 rounded-2xl border border-[#4A301F11] bg-white/70 p-4 shadow-[0_8px_20px_rgba(26,26,26,0.08)] sm:p-5">
+          {error && <p className="text-sm text-red-700">{error}</p>}
           <div className="flex items-center justify-between text-sm text-[#4A301F]">
             <span className="font-semibold text-[#1A1A1A]">Ucapan Terkini</span>
             <span className="rounded-full bg-[#F1EFEF] px-3 py-1 text-xs font-semibold text-[#4A301F]">
@@ -119,24 +191,26 @@ export default function WishesSection({ invitedName = "Tamu Istimewa" }: WishesS
             </span>
           </div>
           <div className="grid gap-3">
-            {visibleWishes.map((wish) => (
-              <article
-                key={`${wish.name}-${wish.timestamp}`}
-                className="rounded-xl border border-[#D9D4CF] bg-white/90 px-3 py-3 shadow-[0_8px_18px_rgba(26,26,26,0.06)]"
-              >
-                <div className="flex items-center justify-between">
-                  <p className="text-sm font-semibold text-[#1A1A1A]">{wish.name}</p>
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-[#C57B8B]">
-                    {new Date(wish.timestamp).toLocaleDateString("id-ID", {
-                      month: "short",
-                      day: "numeric",
-                    })}
-                  </p>
-                </div>
-                <p className="mt-2 text-sm leading-relaxed text-[#4A301F]">{wish.message}</p>
-              </article>
-            ))}
-            {visibleWishes.length === 0 && (
+            {loading && <p className="text-center text-sm text-[#4A301F]">Memuat ucapan...</p>}
+            {!loading &&
+              visibleWishes.map((wish) => (
+                <article
+                  key={wish.id ?? `${wish.name}-${wish.timestamp ?? Math.random()}`}
+                  className="rounded-xl border border-[#D9D4CF] bg-white/90 px-3 py-3 shadow-[0_8px_18px_rgba(26,26,26,0.06)]"
+                >
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm font-semibold text-[#1A1A1A]">{wish.name}</p>
+                    <p className="text-[11px] uppercase tracking-[0.18em] text-[#C57B8B]">
+                      {new Date(wish.timestamp ?? Date.now()).toLocaleDateString("id-ID", {
+                        month: "short",
+                        day: "numeric",
+                      })}
+                    </p>
+                  </div>
+                  <p className="mt-2 text-sm leading-relaxed text-[#4A301F]">{wish.message}</p>
+                </article>
+              ))}
+            {!loading && visibleWishes.length === 0 && (
               <p className="text-center text-sm text-[#4A301F]">Belum ada ucapan pada halaman ini.</p>
             )}
           </div>
