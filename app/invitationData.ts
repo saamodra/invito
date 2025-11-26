@@ -42,13 +42,13 @@ export const locations: Record<LocationKey, Location> = {
 export const events: EventDetail[] = [
   {
     title: "Akad Nikah",
-    date: "Sabtu, 8 Februari 2026",
+    date: "Minggu, 8 Februari 2026",
     time: "08.00 WIB - Selesai",
     location: "main",
   },
   {
     title: "Resepsi Nikah",
-    date: "Sabtu, 8 Februari 2026",
+    date: "Minggu, 8 Februari 2026",
     time: "13.00 WIB - Selesai",
     location: "main",
   },
@@ -76,13 +76,13 @@ export const weddingGifts: WeddingGift[] = [
 
 export const couple: CoupleDetail[] = [
   {
-    label: "The Groom",
+    label: "Mempelai Pria",
     name: "Sabrang Prasetyo",
     parents: ["Putra dari Bapak Purnomo", "dan Ibu Supini"],
     image: "/photos/pdp-68.jpg",
   },
   {
-    label: "The Bride",
+    label: "Mempelai Wanita",
     name: "Yeni Kurnia Sari",
     parents: ["Putri dari Bapak Sukadi", "dan Almh. Ibu Sunarmi"],
     image: "/photos/pdp-62.jpg",

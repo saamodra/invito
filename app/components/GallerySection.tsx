@@ -10,7 +10,7 @@ export default function GallerySection({ galleryImages }: GallerySectionProps) {
     <>
       <section className="text-center space-y-3">
         <p className="font-ui text-xs uppercase tracking-[0.3em] text-[#C57B8B]">Galeri</p>
-        <h2 className="text-3xl font-semibold text-[#1A1A1A]">Our Gallery</h2>
+        <h2 className="text-3xl font-semibold text-[#1A1A1A]">Galeri Kami</h2>
         <div className="mx-auto flex items-center justify-center gap-3">
           <span className="h-px w-10 bg-[#D4A857]" />
           <span className="h-1.5 w-1.5 rounded-full bg-[#4A301F]" />

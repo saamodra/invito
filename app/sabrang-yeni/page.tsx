@@ -15,6 +15,11 @@ import {
   weddingGifts,
   weddingTimestamp,
 } from "../invitationData";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sabrang & Yeni",
+};
 
 type HomeProps = {
   searchParams?:

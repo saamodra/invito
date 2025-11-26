@@ -17,7 +17,7 @@ export default function GiftSection({ weddingGifts }: GiftSectionProps) {
   return (
     <section className="rounded-2xl border border-[#C57B8B]/40 bg-gradient-to-br from-[#fdf8f4] via-[#f0e3da] to-[#e5d2c9] p-6 shadow-[0_20px_45px_rgba(26,26,26,0.15)] sm:p-8">
       <div className="text-center">
-        <p className="font-ui text-xs uppercase tracking-[0.3em] text-[#C57B8B]">Wedding Gift</p>
+        <p className="font-ui text-xs uppercase tracking-[0.3em] text-[#C57B8B]">Kado Pernikahan</p>
         <h2 className="mt-2 text-3xl font-semibold text-[#1A1A1A]">Ungkapan Kasih</h2>
         <p className="mt-2 text-[#4A301F]">
           Tanpa mengurangi rasa hormat, bagi Bapak/Ibu/Saudara/i yang ingin berbagi kebahagiaan, kami dengan

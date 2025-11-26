@@ -24,7 +24,7 @@ export default function CoupleSection({ couple }: CoupleSectionProps) {
               height={960}
               className="h-full w-full object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
-              priority={person.label === "The Groom"}
+              priority={person.label === "Mempelai Pria"}
             />
           </div>
           <div className="space-y-1">
