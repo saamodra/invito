@@ -55,17 +55,17 @@ export const events: EventDetail[] = [
 ];
 
 export const galleryImages: GalleryImage[] = [
-  { src: "/galleries/pdp-70.jpg", alt: "PDP 70" },
-  { src: "/galleries/pdp-61.jpg", alt: "PDP 61" },
+  { src: "/galleries/pdp-67.jpg", alt: "PDP 67" },
+  { src: "/galleries/pdp-54.jpg", alt: "PDP 54" },
   { src: "/galleries/pdp-21.jpg", alt: "PDP 21" },
-  { src: "/galleries/pdp-12.jpg", alt: "PDP 12" },
+  { src: "/galleries/pdp-32.jpg", alt: "PDP 32" },
   { src: "/galleries/pdp-10.jpg", alt: "PDP 10" },
   { src: "/galleries/pdp-11.jpg", alt: "PDP 11" },
   { src: "/galleries/pdp-25.jpg", alt: "PDP 25" },
   { src: "/galleries/pdp-24.jpg", alt: "PDP 24" },
   { src: "/galleries/pdp-36.jpg", alt: "PDP 36" },
   { src: "/galleries/pdp-41.jpg", alt: "PDP 41" },
-  { src: "/galleries/pdp-42.jpg", alt: "PDP 42" },
+  { src: "/galleries/pdp-14.jpg", alt: "PDP 14" },
   { src: "/galleries/pdp-30.jpg", alt: "PDP 30" },
 ];
 

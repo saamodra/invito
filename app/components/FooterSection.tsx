@@ -4,7 +4,7 @@ export default function FooterSection() {
   return (
     <footer className="relative -mx-6 mt-4 overflow-hidden bg-[#1A1A1A] sm:-mx-14">
       <Image
-        src="/photos/pdp-31.jpg"
+        src="/photos/pdp-18.jpg"
         alt="Sabrang dan Yeni berpose sebagai pasangan"
         fill
         className="object-cover"
