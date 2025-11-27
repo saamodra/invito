@@ -79,7 +79,7 @@ export default function SabrangYeniClient({
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,168,87,0.2),transparent_60%),linear-gradient(120deg,#f1efef_0%,#d9d4cf_45%,#f1efef_100%)] opacity-90" />
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 left-1/2 w-full -translate-x-1/2 rotate-6 scale-[1.6] bg-[url('/file.svg')] bg-size-[320px] bg-center opacity-10"
+              className="pointer-events-none absolute inset-y-0 left-1/2 w-full -translate-x-1/2 rotate-6 bg-[url('/file.svg')] bg-size-[320px] bg-center opacity-10"
             />
 
             <HeroSection invitedName={invitedName} onOpen={handleOpen} isOpened={isOpened} />

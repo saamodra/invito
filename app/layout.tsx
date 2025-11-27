@@ -40,6 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
+        suppressHydrationWarning
         className={`${poppins.variable} ${playfair.variable} ${greatVibes.variable} antialiased`}
       >
         {children}
