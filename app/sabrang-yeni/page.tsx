@@ -6,6 +6,7 @@ import GallerySection from "../components/GallerySection";
 import GiftSection from "../components/GiftSection";
 import HeroSection from "../components/HeroSection";
 import IntroSection from "../components/IntroSection";
+import MusicPlayer from "../components/MusicPlayer";
 import WishesSection from "../components/WishesSection";
 import {
   couple,
@@ -45,6 +46,7 @@ export default async function SabrangYeni({ searchParams }: HomeProps) {
 
   return (
     <div className="relative min-h-screen bg-[#1A1A1A] text-[#2B2B2B] scroll-smooth">
+      <MusicPlayer />
       <div className="relative md:flex">
         <div className="relative hidden md:flex fixed inset-y-0 left-0 md:w-full items-center justify-center overflow-hidden bg-[#1A1A1A]">
           <Image
