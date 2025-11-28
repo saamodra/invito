@@ -9,6 +9,7 @@ type MusicPlayerProps = {
 const MusicPlayer = ({ enabled }: MusicPlayerProps) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(true);
+  const shouldResumeOnShow = useRef(false);
 
   useEffect(() => {
     if (!enabled) {
@@ -39,6 +40,35 @@ const MusicPlayer = ({ enabled }: MusicPlayerProps) => {
         audio.pause();
       }
       audioRef.current = null;
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      const audio = audioRef.current;
+      const isHidden = document.hidden;
+
+      if (isHidden) {
+        if (audio && !audio.paused) {
+          shouldResumeOnShow.current = true;
+          audio.pause();
+          setIsPlaying(false);
+        } else {
+          shouldResumeOnShow.current = false;
+        }
+        return;
+      }
+
+      if (shouldResumeOnShow.current) {
+        setIsPlaying(true);
+        shouldResumeOnShow.current = false;
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
 
